@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+    namespace 'com.mizanora.app'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.mizanora.app"
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName "0.1"
+
+        // Passed from GitHub Actions: -PgeminiApiKey="..."
+        // Falls back to empty string for local builds — the app will ask
+        // you to paste a key in Settings if this is blank.
+        def apiKey = project.hasProperty('geminiApiKey') ? project.property('geminiApiKey') : ""
+        buildConfigField "String", "GEMINI_API_KEY", "\"${apiKey}\""
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.9.24'
+    // Lets the API key be typed once in-app and stored encrypted on device,
+    // instead of only being baked in at build time.
+    implementation 'androidx.security:security-crypto:1.1.0-alpha06'
+}

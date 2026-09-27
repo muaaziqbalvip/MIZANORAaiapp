@@ -1,0 +1,7 @@
+<resources>
+    <style name="Theme.Mizanora" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#7C4DFF</item>
+        <item name="colorPrimaryDark">#4527A0</item>
+        <item name="colorAccent">#B388FF</item>
+    </style>
+</resources>

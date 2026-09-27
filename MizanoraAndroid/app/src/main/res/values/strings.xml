@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Mizanora</string>
+    <string name="accessibility_service_description">Lets Mizanora tap, type and scroll on your behalf when you ask it to do something on screen. You can turn this off anytime in Settings -&gt; Accessibility.</string>
+    <string name="notification_channel_name">Mizanora is watching your screen</string>
+    <string name="notification_text">Mizanora is active and can see your screen. Tap to open.</string>
+</resources>
